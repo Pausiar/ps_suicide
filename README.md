@@ -64,14 +64,22 @@ Config.Weapons = {
 
 ### Notificación Personalizada
 
-Si no usas ESX o quieres cambiar la notificación cuando no se tiene un arma:
+⚠️ **Importante**: Por defecto, el script usa ESX para las notificaciones (`ESX.ShowNotification`).
+
+Si no usas ESX o quieres cambiar la notificación cuando no se tiene un arma, debes modificar la función `Config.NoWeaponInHands` en el archivo `config.lua`:
 
 ```lua
 Config.NoWeaponInHands = function()
-    -- Personaliza tu notificación aquí
-    -- Ejemplo para otros frameworks:
+    -- Personaliza tu notificación aquí según tu framework
+    
+    -- Ejemplo para QBCore:
     -- QBCore.Functions.Notify('No tienes un arma en las manos', 'error')
-    -- TriggerEvent('chat:addMessage', {args = {'No tienes un arma en las manos'}})
+    
+    -- Ejemplo para chat simple:
+    -- TriggerEvent('chat:addMessage', {args = {'Sistema', 'No tienes un arma en las manos'}})
+    
+    -- Ejemplo para notificaciones personalizadas:
+    -- exports['tu_sistema_notificaciones']:Notify('No tienes un arma en las manos')
 end
 ```
 
@@ -93,12 +101,12 @@ end
 
 ## 🔧 Características Técnicas
 
-- **Framework**: Compatible con cualquier framework (incluye ejemplo para ESX)
+- **Framework**: Compatible con cualquier framework (por defecto usa ESX para notificaciones, pero es fácilmente personalizable)
 - **Versión de Lua**: 5.4
-- **Versión FX**: Bodacious
+- **Versión FX**: Bodacious (funciona con versiones actuales de FiveM)
 - **Optimización**: Utiliza CreateThread solo cuando es necesario
 - **Animación**: `mp_suicide` (pistol)
-- **Sin dependencias**: Funciona de forma independiente
+- **Dependencias**: Ninguna (opcional ESX para notificaciones)
 
 ## 📝 Notas Importantes
 
